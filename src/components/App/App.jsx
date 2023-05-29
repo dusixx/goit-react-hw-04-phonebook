@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { ContactEditor } from 'components/ContactEditor';
-import { ContactList } from 'components/ContactList';
-import { Filter } from 'components/Filter';
 import { Container } from './App.styled';
 import { Block } from 'styles/shared';
 import { initialContacts } from 'data/contacts';
 import { formatNumber, getId } from 'utils';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { ContactEditor } from 'components/ContactEditor';
+import { ContactList } from 'components/ContactList';
+import { Filter } from 'components/Filter';
 import { Header } from 'components/Header';
 
 //

@@ -1,3 +1,4 @@
+import { func } from 'prop-types';
 import { IconContactsBook, IconRefresh } from 'styles/icons';
 import { ButtonSecondary } from 'styles/shared';
 import { Container, Logo } from './Header.styled';
@@ -14,4 +15,8 @@ export const Header = ({ onResetClick }) => {
       </ButtonSecondary>
     </Container>
   );
+};
+
+Header.propTypes = {
+  onResetClick: func,
 };

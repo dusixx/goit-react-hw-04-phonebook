@@ -7,13 +7,10 @@ export const Container = styled.div`
   gap: 15px;
 
   margin: 0 auto 0 auto;
-  padding: 20px;
-  width: ${({ width }) => width || '95%'};
-  min-width: 250px;
+  padding: 10px;
 
-  @media screen and (min-width: 768px) {
-    width: 90%;
-  }
+  width: ${({ width }) => width || '100%'};
+  min-width: 250px;
 
   @media screen and (min-width: 1200px) {
     width: 50%;
