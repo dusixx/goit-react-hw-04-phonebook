@@ -130,7 +130,11 @@ export const App = () => {
         </Block>
       )}
 
-      <ToastContainer autoClose={1500} position="top-center" />
+      <ToastContainer
+        autoClose={1500}
+        position="top-center"
+        progressStyle={{ height: '3px' }}
+      />
     </Container>
   );
 };
