@@ -15,15 +15,12 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 //
 
 const LS_KEY_CONTACTS = 'contacts';
+const { warn, error, success } = toast;
 
 const message = {
   ALREADY_EXISTS: `The contact with the same name or number already exists`,
   ACTION_NOT_SUPPORTED: 'Action not supported',
   ADDED_SUCCESS: `The contact was added successfully`,
-};
-
-const toastOpts = {
-  position: toast.POSITION.TOP_CENTER,
 };
 
 //
@@ -72,11 +69,11 @@ export const App = () => {
 
     if (!isContactExists(data)) {
       addContact(data);
-      toast.success(message.ADDED_SUCCESS, toastOpts);
+      success(message.ADDED_SUCCESS);
       return true;
     }
 
-    toast.error(message.ALREADY_EXISTS, toastOpts);
+    error(message.ALREADY_EXISTS);
   };
 
   const handleControlClick = (id, controlName) => {
@@ -84,7 +81,7 @@ export const App = () => {
       case 'delete':
         return deleteContact(id);
       case 'edit':
-        return toast.warn(message.ACTION_NOT_SUPPORTED, toastOpts);
+        return warn(message.ACTION_NOT_SUPPORTED);
       default:
     }
   };
@@ -133,7 +130,7 @@ export const App = () => {
         </Block>
       )}
 
-      <ToastContainer autoClose={1500} />
+      <ToastContainer autoClose={1500} position="top-center" />
     </Container>
   );
 };
