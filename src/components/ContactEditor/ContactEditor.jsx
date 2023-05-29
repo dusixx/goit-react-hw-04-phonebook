@@ -4,8 +4,6 @@ import { TextField } from 'components/TextField';
 import { Form, Button } from './ContactEditor.styled';
 import { IconPhone, IconUser, IconUserPlus } from 'styles/icons';
 
-const FIELD_HEIGHT = '35px';
-
 export const ContactEditor = props => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -27,7 +25,7 @@ export const ContactEditor = props => {
       <TextField
         name="name"
         placeholder="name"
-        height={FIELD_HEIGHT}
+        height="var(--field-height)"
         icon={IconUser}
         value={name}
         autoComplete="off"
@@ -40,7 +38,7 @@ export const ContactEditor = props => {
       <TextField
         name="number"
         placeholder="number"
-        height={FIELD_HEIGHT}
+        height="var(--field-height)"
         icon={IconPhone}
         type="tel"
         value={number}

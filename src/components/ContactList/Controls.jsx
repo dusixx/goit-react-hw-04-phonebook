@@ -1,5 +1,5 @@
-import { ControlsList, Control, ControlBtn } from './Controls.styled';
 import { string, number, objectOf, oneOfType, func } from 'prop-types';
+import { ControlsList, Control, ControlBtn } from './Controls.styled';
 import { getId, cap } from 'components/utils';
 
 export const Controls = ({ value, onControlClick, targetId, height }) => {

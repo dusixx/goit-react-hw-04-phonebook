@@ -1,7 +1,7 @@
 import { string, exact, arrayOf, oneOfType, number } from 'prop-types';
+import { Controls } from './Controls';
 import { IconDelete, IconEdit } from 'styles/icons';
 import { List, Item, Column } from './ContactList.styled';
-import { Controls } from './Controls';
 
 const controlsData = {
   edit: IconEdit,

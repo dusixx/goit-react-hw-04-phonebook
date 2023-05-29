@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { ButtonBase, FlexCentered } from 'styles/shared';
 
 export const Field = styled.label`
-  /* flex-shrink: 0; */
   width: ${({ width }) => width || '100%'};
   height: ${({ height }) => height || '100%'};
 `;

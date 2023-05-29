@@ -10,6 +10,7 @@
   --box-shadow: 0 1px 1px 1px rgb(202, 202, 202);
   --border-radius: 8px;
   --header-height: 60px;
+  --field-height: 35px;
 
   --gallery-items-gap: 15px;
   --gallery-items-per-row: 1;

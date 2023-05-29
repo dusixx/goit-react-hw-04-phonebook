@@ -1,4 +1,6 @@
 import { func, string, number, oneOfType } from 'prop-types';
+import { IconClose } from 'styles/icons';
+
 import {
   ClearBtn,
   InputWrapper,
@@ -6,7 +8,6 @@ import {
   Field,
   IconWrapper,
 } from './TextField.styled';
-import { VscClose as IconClose } from 'react-icons/vsc';
 
 export const TextField = ({
   value,
@@ -26,11 +27,15 @@ export const TextField = ({
           value={value}
           {...restProps}
         />
+
+        {/* Icon */}
         {ReactIcon && (
           <IconWrapper>
             <ReactIcon size="100%" />
           </IconWrapper>
         )}
+
+        {/* Clear btn */}
         {value && (
           <ClearBtn type="button" onClick={() => onChange(null)}>
             <IconClose size="100%" />

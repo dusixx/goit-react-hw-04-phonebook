@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { Container, Header, Logo } from './App.styled';
-import { ContactEditor } from 'components/ContactEditor/ContactEditor';
+import { ContactEditor } from 'components/ContactEditor';
+import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
-import { formatNumber, getId } from 'components/utils';
-import { Block } from 'styles/shared';
-import { ContactList } from 'components/ContactList/ContactList';
-import { initialContacts } from 'data/contacts';
-import { ButtonSecondary } from 'styles/shared';
+import { Container, Header, Logo } from './App.styled';
+import { ButtonSecondary, Block } from 'styles/shared';
 import { IconContactsBook, IconRefresh } from 'styles/icons';
+import { initialContacts } from 'data/contacts';
+import { formatNumber, getId } from 'components/utils';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 const LS_KEY_CONTACTS = 'contacts';
@@ -56,12 +55,14 @@ export const App = props => {
     return true;
   };
 
+  // вернет true - форма очищается
   const handleContactEditorSubmit = ({ name, number }) => {
     const data = { name, number: formatNumber(number) };
 
     if (!isContactExists(data)) {
       addContact(data);
-      return toast.success(MSG_ADDED_SUCCESS);
+      toast.success(MSG_ADDED_SUCCESS);
+      return addContact(data);
     }
 
     toast.error(ERR_ALREADY_EXISTS);
@@ -94,10 +95,12 @@ export const App = props => {
         </ButtonSecondary>
       </Header>
 
+      {/* Contact editor */}
       <Block style={{ padding: '15px' }}>
         <ContactEditor onSubmit={handleContactEditorSubmit} />
       </Block>
 
+      {/* Filter */}
       {contacts.length > 0 && (
         <Block style={{ padding: '10px' }}>
           <Filter
@@ -107,6 +110,7 @@ export const App = props => {
         </Block>
       )}
 
+      {/* Contact list */}
       {filtered.length > 0 && (
         <Block maxHeight="70%">
           <ContactList
