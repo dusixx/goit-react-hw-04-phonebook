@@ -94,7 +94,7 @@ export const App = props => {
   return (
     <Container>
       <Header>
-        <Logo>
+        <Logo href="./">
           <IconContactsBook size={22} />
           PhoneBook
         </Logo>

@@ -26,10 +26,13 @@ export const Header = styled.div`
   width: ${({ width }) => width || '100%'};
 `;
 
-export const Logo = styled.h1`
-  ${FlexCentered(`gap: 10px`)}
+export const Logo = styled.a`
+  ${FlexCentered(`gap: 10px`)};
+
+  font-weight: 700;
   font-size: 24px;
   letter-spacing: -1px;
+  color: currentColor;
 
   & svg {
     color: var(--color-accent);
