@@ -12,19 +12,11 @@ export const calcCSSValue = v => (isNum(v) ? `${v}px` : v);
 let id = 0;
 export const getId = () => `id-${(id++).toString(16)}`;
 
-const normId = id => `${id}`.replace(/[^$\w]/gi, '').replace(/^\d+/, '');
-
 export const parseCSSValue = v => {
   const value = parseFloat(v);
   const unit = String(v).slice(String(value).length) || 'px';
   return { value, unit };
 };
-
-export function camelToSnake(str) {
-  return normId(str)
-    .replace(/(?<=[^A-Z])([A-Z])/g, (_, ch) => `_${ch.toLowerCase()}`)
-    .replace(/_+/g, '_');
-}
 
 export const formatNumber = number =>
   number.replace(/[\s-]/g, '').replace(/(\d{3})(\d{2})(\d{2})/, '$1-$2-$3');
