@@ -7,7 +7,7 @@ import { Container, Header, Logo } from './App.styled';
 import { ButtonSecondary, Block } from 'styles/shared';
 import { IconContactsBook, IconRefresh } from 'styles/icons';
 import { initialContacts } from 'data/contacts';
-import { formatNumber, getId } from 'components/utils';
+import { formatNumber, getId } from 'utils';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 //

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { isStr, calcCSSValue } from 'components/utils';
+import { isStr, calcCSSValue } from 'utils';
 
 // Utils
 

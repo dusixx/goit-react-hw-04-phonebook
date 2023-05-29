@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ButtonBase, FlexCentered } from 'styles/shared';
-import { calcCSSValue } from 'components/utils';
+import { calcCSSValue } from 'utils';
 
 export const ControlsList = styled.ul`
   ${FlexCentered('gap: 5px')};
