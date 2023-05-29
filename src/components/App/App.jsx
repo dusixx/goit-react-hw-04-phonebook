@@ -3,12 +3,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import { ContactEditor } from 'components/ContactEditor';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
-import { Container, Header, Logo } from './App.styled';
-import { ButtonSecondary, Block } from 'styles/shared';
-import { IconContactsBook, IconRefresh } from 'styles/icons';
+import { Container } from './App.styled';
+import { Block } from 'styles/shared';
 import { initialContacts } from 'data/contacts';
 import { formatNumber, getId } from 'utils';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { Header } from 'components/Header';
 
 //
 // Options
@@ -90,18 +90,7 @@ export const App = () => {
 
   return (
     <Container>
-      <Header>
-        <Logo href="./">
-          <IconContactsBook size={22} />
-          PhoneBook
-        </Logo>
-        <ButtonSecondary
-          title="Reset to initial"
-          onClick={() => setContacts(initialContacts)}
-        >
-          <IconRefresh size={20} />
-        </ButtonSecondary>
-      </Header>
+      <Header onResetClick={() => setContacts(initialContacts)} />
 
       {/* Contact editor */}
       <Block style={{ padding: '15px' }}>
