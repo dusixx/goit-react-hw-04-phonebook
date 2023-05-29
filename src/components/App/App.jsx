@@ -15,6 +15,10 @@ const ERR_ALREADY_EXISTS = `The contact with the same name or number already exi
 const WARN_ACTION_NOT_SUPPORTED = 'Action not supported';
 const MSG_ADDED_SUCCESS = `The contact was added successfully`;
 
+const toastOpts = {
+  position: toast.POSITION.TOP_CENTER,
+};
+
 //
 // App
 //
@@ -61,11 +65,11 @@ export const App = props => {
 
     if (!isContactExists(data)) {
       addContact(data);
-      toast.success(MSG_ADDED_SUCCESS);
+      toast.success(MSG_ADDED_SUCCESS, toastOpts);
       return addContact(data);
     }
 
-    toast.error(ERR_ALREADY_EXISTS);
+    toast.error(ERR_ALREADY_EXISTS, toastOpts);
   };
 
   const handleControlClick = (id, controlName) => {
@@ -73,7 +77,7 @@ export const App = props => {
       case 'delete':
         return deleteContact(id);
       case 'edit':
-        return toast.warn(WARN_ACTION_NOT_SUPPORTED);
+        return toast.warn(WARN_ACTION_NOT_SUPPORTED, toastOpts);
       default:
     }
   };
