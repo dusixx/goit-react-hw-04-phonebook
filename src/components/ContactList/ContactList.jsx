@@ -1,4 +1,4 @@
-import { string, exact, arrayOf } from 'prop-types';
+import { string, exact, arrayOf, oneOfType, number } from 'prop-types';
 import { IconDelete, IconEdit } from 'styles/icons';
 import { List, Item, Column } from './ContactList.styled';
 import { Controls } from './Controls';
@@ -8,12 +8,17 @@ const controlsData = {
   delete: IconDelete,
 };
 
-export const ContactList = ({ value, controlsHeight, ...restProps }) => {
+export const ContactList = ({
+  value,
+  controlsHeight,
+  itemHeight,
+  ...restProps
+}) => {
   return (
     <List>
       {value.map(({ id, name, number }) => {
         return (
-          <Item key={id}>
+          <Item key={id} height={itemHeight}>
             <Column>{name}</Column>
             <Column>{number}</Column>
             <Column>
@@ -32,6 +37,7 @@ export const ContactList = ({ value, controlsHeight, ...restProps }) => {
 };
 
 ContactList.propTypes = {
+  itemHeight: oneOfType([string, number]),
   value: arrayOf(
     exact({
       name: string.isRequired,

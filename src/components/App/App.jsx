@@ -1,63 +1,66 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { Container } from './App.styled';
+import { Container, Header, Logo } from './App.styled';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { Filter } from 'components/Filter';
 import { formatNumber, getId } from 'components/utils';
 import { Block } from 'styles/shared';
 import { ContactList } from 'components/ContactList/ContactList';
 import { initialContacts } from 'data/contacts';
+import { ButtonSecondary } from 'styles/shared';
+import { IconContactsBook, IconRefresh } from 'styles/icons';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
+const LS_KEY_CONTACTS = 'contacts';
 const ERR_ALREADY_EXISTS = `The contact with the same name or number already exists`;
 const WARN_ACTION_NOT_SUPPORTED = 'Action not supported';
 const MSG_ADDED_SUCCESS = `The contact was added successfully`;
 
+//
+// App
+//
+
 export const App = props => {
   const [filter, setFilter] = useState('');
-  const [contacts, setContacts] = useState(initialContacts);
-
-  //
-  // contacts interface
-  //
-  const contactList = useMemo(
-    () => ({
-      isExists({ name, number }) {
-        return contacts.find(
-          itm =>
-            itm.name.toLocaleLowerCase() === name.toLocaleLowerCase() ||
-            itm.number === number
-        );
-      },
-
-      filter() {
-        const searchStr = filter.trim().toLocaleLowerCase();
-
-        return searchStr
-          ? contacts.filter(
-              ({ name, number }) =>
-                name.toLocaleLowerCase().includes(searchStr) ||
-                number.includes(searchStr)
-            )
-          : contacts;
-      },
-
-      add(data) {
-        setContacts(cur => [...cur, { ...data, id: getId() }]);
-        return true;
-      },
-
-      delete(id) {
-        return setContacts(cur => cur.filter(itm => itm.id !== id));
-      },
-    }),
-    [contacts, filter]
+  const [contacts, setContacts] = useLocalStorage(
+    LS_KEY_CONTACTS,
+    initialContacts
   );
+
+  const isContactExists = ({ name, number }) =>
+    contacts.find(
+      itm =>
+        itm.name.toLocaleLowerCase() === name.toLocaleLowerCase() ||
+        itm.number === number
+    );
+
+  const filterContacts = () => {
+    const searchStr = filter.trim().toLocaleLowerCase();
+
+    return searchStr
+      ? contacts.filter(
+          ({ name, number }) =>
+            name.toLocaleLowerCase().includes(searchStr) ||
+            number.includes(searchStr)
+        )
+      : contacts;
+  };
+
+  const addContact = data => {
+    setContacts(cur => [...cur, { ...data, id: getId() }]);
+    return true;
+  };
+
+  const deleteContact = id => {
+    setContacts(cur => cur.filter(itm => itm.id !== id));
+    return true;
+  };
 
   const handleContactEditorSubmit = ({ name, number }) => {
     const data = { name, number: formatNumber(number) };
 
-    if (!contactList.isExists(data)) {
-      contactList.add(data);
+    if (!isContactExists(data)) {
+      addContact(data);
       return toast.success(MSG_ADDED_SUCCESS);
     }
 
@@ -67,17 +70,30 @@ export const App = props => {
   const handleControlClick = (id, controlName) => {
     switch (controlName) {
       case 'delete':
-        return contactList.delete(id);
+        return deleteContact(id);
       case 'edit':
         return toast.warn(WARN_ACTION_NOT_SUPPORTED);
       default:
     }
   };
 
-  const filtered = useMemo(() => contactList.filter(), [contactList]);
+  const filtered = filterContacts();
 
   return (
     <Container>
+      <Header>
+        <Logo>
+          <IconContactsBook size={22} />
+          PhoneBook
+        </Logo>
+        <ButtonSecondary
+          title="Reset to initial"
+          onClick={() => setContacts(initialContacts)}
+        >
+          <IconRefresh size={20} />
+        </ButtonSecondary>
+      </Header>
+
       <Block style={{ padding: '15px' }}>
         <ContactEditor onSubmit={handleContactEditorSubmit} />
       </Block>
@@ -95,7 +111,8 @@ export const App = props => {
         <Block maxHeight="70%">
           <ContactList
             value={filtered}
-            controlsHeight="75%"
+            itemHeight="40px"
+            controlsHeight="60%"
             onControlClick={handleControlClick}
           />
         </Block>

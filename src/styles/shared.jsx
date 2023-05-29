@@ -58,6 +58,18 @@ export const ButtonPrimary = styled(ButtonBase)`
   }
 `;
 
+export const ButtonSecondary = styled(ButtonPrimary)`
+  background-color: #cccccc;
+  color: var(--color-black);
+  transition-property: filter;
+
+  &:focus-visible,
+  &:hover {
+    background-color: #cccccc;
+    filter: brightness(0.9);
+  }
+`;
+
 //
 // Misc
 //

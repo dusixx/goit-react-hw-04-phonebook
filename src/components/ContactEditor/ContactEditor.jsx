@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { func } from 'prop-types';
 import { TextField } from 'components/TextField';
-import { ButtonPrimary } from 'styles/shared';
-import { Form } from './ContactEditor.styled';
-import { IconPhone, IconUser } from 'styles/icons';
+import { Form, Button } from './ContactEditor.styled';
+import { IconPhone, IconUser, IconUserPlus } from 'styles/icons';
 
-const FIELD_HEIGHT = '30px';
+const FIELD_HEIGHT = '35px';
 
 export const ContactEditor = props => {
   const [name, setName] = useState('');
@@ -51,7 +50,10 @@ export const ContactEditor = props => {
         title="Number must be 7 digits"
         required
       />
-      <ButtonPrimary type="submit">Add contact</ButtonPrimary>
+
+      <Button type="submit">
+        <IconUserPlus size="20px" /> Add
+      </Button>
     </Form>
   );
 };

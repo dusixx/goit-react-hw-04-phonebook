@@ -9,7 +9,7 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   ${FlexCentered('justify-content: space-between')};
-  height: 30px;
+  height: ${({ height }) => height};
 `;
 
 export const Column = styled.span`
