@@ -1,0 +1,19 @@
+:root {
+  --color-accent: rgb(28, 102, 238);
+  --color-accent-lighter: rgb(236, 243, 255);
+  --color-gray-lighter: #f1f1f1;
+  --color-black: rgb(51, 51, 51);
+  --color-text: var(var(--color-black));
+  --color-background: rgb(226, 226, 226);
+  --color-border: #d3d3d3;
+
+  --box-shadow: 0 1px 1px 1px rgb(202, 202, 202);
+  --border-radius: 8px;
+  --header-height: 60px;
+
+  --gallery-items-gap: 15px;
+  --gallery-items-per-row: 1;
+
+  --trans-func: ease;
+  --trans-duration: 250ms;
+}
