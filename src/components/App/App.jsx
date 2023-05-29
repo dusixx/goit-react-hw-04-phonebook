@@ -15,7 +15,6 @@ import { Header } from 'components/Header';
 //
 
 const LS_KEY_CONTACTS = 'contacts';
-const { warn, error, success } = toast;
 
 const message = {
   ALREADY_EXISTS: `The contact with the same name or number already exists`,
@@ -64,16 +63,16 @@ export const App = () => {
   };
 
   // вернет true - форма очистится
-  const handleContactEditorSubmit = ({ name, number }) => {
+  const handleEditorSubmit = ({ name, number }) => {
     const data = { name, number: formatNumber(number) };
 
     if (!isContactExists(data)) {
       addContact(data);
-      success(message.ADDED_SUCCESS);
+      toast.success(message.ADDED_SUCCESS);
       return true;
     }
 
-    error(message.ALREADY_EXISTS);
+    toast.error(message.ALREADY_EXISTS);
   };
 
   const handleControlClick = (id, controlName) => {
@@ -81,7 +80,7 @@ export const App = () => {
       case 'delete':
         return deleteContact(id);
       case 'edit':
-        return warn(message.ACTION_NOT_SUPPORTED);
+        return toast.warn(message.ACTION_NOT_SUPPORTED);
       default:
     }
   };
@@ -94,7 +93,7 @@ export const App = () => {
 
       {/* Contact editor */}
       <Block style={{ padding: '15px' }}>
-        <ContactEditor onSubmit={handleContactEditorSubmit} />
+        <ContactEditor onSubmit={handleEditorSubmit} />
       </Block>
 
       {/* Filter */}
