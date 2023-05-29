@@ -1,9 +1,9 @@
-import { IconSearch } from 'styles/icons';
+import { IconFilter } from 'styles/icons';
 import { TextField } from 'components/TextField';
 
 export const Filter = props => (
   <TextField
-    icon={IconSearch}
+    icon={IconFilter}
     height="var(--field-height)"
     name="filter"
     placeholder="Filter"

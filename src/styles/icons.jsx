@@ -4,6 +4,7 @@ import { MdOutlineEdit, MdDeleteOutline, MdCopyAll } from 'react-icons/md';
 import { VscClose } from 'react-icons/vsc';
 import { RiContactsBook2Fill, RiEmotionSadLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
+import { TbFilter } from 'react-icons/tb';
 
 export const IconSortAz = CgSortAz;
 export const IconSortZa = CgSortZa;
@@ -18,3 +19,4 @@ export const IconSmileSad = RiEmotionSadLine;
 export const IconUser = AiOutlineUser;
 export const IconPhone = BiPhone;
 export const IconRefresh = BiRefresh;
+export const IconFilter = TbFilter;
