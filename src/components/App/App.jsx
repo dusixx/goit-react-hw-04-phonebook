@@ -17,7 +17,7 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 const LS_KEY_CONTACTS = 'contacts';
 
 const message = {
-  LREADY_EXISTS: `The contact with the same name or number already exists`,
+  ALREADY_EXISTS: `The contact with the same name or number already exists`,
   ACTION_NOT_SUPPORTED: 'Action not supported',
   ADDED_SUCCESS: `The contact was added successfully`,
 };
