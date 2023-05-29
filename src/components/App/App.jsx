@@ -42,7 +42,7 @@ export const App = () => {
     );
 
   const filterContacts = () => {
-    const searchStr = filter.trim().toLocaleLowerCase();
+    const searchStr = filter.toLocaleLowerCase();
 
     return searchStr
       ? contacts.filter(

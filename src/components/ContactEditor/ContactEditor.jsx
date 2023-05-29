@@ -15,7 +15,8 @@ export const ContactEditor = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const success = onSubmit && onSubmit({ name, number });
+    const success =
+      onSubmit && onSubmit({ name: name.trim(), number: number.trim() });
     if (success) resetForm();
   };
 
