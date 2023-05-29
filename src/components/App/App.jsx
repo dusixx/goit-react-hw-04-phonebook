@@ -66,7 +66,7 @@ export const App = props => {
     if (!isContactExists(data)) {
       addContact(data);
       toast.success(MSG_ADDED_SUCCESS, toastOpts);
-      return addContact(data);
+      return true;
     }
 
     toast.error(ERR_ALREADY_EXISTS, toastOpts);
