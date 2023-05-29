@@ -10,10 +10,17 @@ import { initialContacts } from 'data/contacts';
 import { formatNumber, getId } from 'components/utils';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
+//
+// Options
+//
+
 const LS_KEY_CONTACTS = 'contacts';
-const ERR_ALREADY_EXISTS = `The contact with the same name or number already exists`;
-const WARN_ACTION_NOT_SUPPORTED = 'Action not supported';
-const MSG_ADDED_SUCCESS = `The contact was added successfully`;
+
+const message = {
+  LREADY_EXISTS: `The contact with the same name or number already exists`,
+  ACTION_NOT_SUPPORTED: 'Action not supported',
+  ADDED_SUCCESS: `The contact was added successfully`,
+};
 
 const toastOpts = {
   position: toast.POSITION.TOP_CENTER,
@@ -59,17 +66,17 @@ export const App = props => {
     return true;
   };
 
-  // вернет true - форма очищается
+  // вернет true - форма очистится
   const handleContactEditorSubmit = ({ name, number }) => {
     const data = { name, number: formatNumber(number) };
 
     if (!isContactExists(data)) {
       addContact(data);
-      toast.success(MSG_ADDED_SUCCESS, toastOpts);
+      toast.success(message.ADDED_SUCCESS, toastOpts);
       return true;
     }
 
-    toast.error(ERR_ALREADY_EXISTS, toastOpts);
+    toast.error(message.ALREADY_EXISTS, toastOpts);
   };
 
   const handleControlClick = (id, controlName) => {
@@ -77,7 +84,7 @@ export const App = props => {
       case 'delete':
         return deleteContact(id);
       case 'edit':
-        return toast.warn(WARN_ACTION_NOT_SUPPORTED, toastOpts);
+        return toast.warn(message.ACTION_NOT_SUPPORTED, toastOpts);
       default:
     }
   };
