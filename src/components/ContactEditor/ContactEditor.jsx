@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { func } from 'prop-types';
 import { TextField } from 'components/TextField';
 import { Form, Button } from './ContactEditor.styled';
-import { IconPhone, IconUser, IconUserPlus } from 'styles/icons';
+import { IconUserPlus } from 'styles/icons';
+import { fieldData } from './fieldData';
 
 export const ContactEditor = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -26,12 +27,12 @@ export const ContactEditor = ({ onSubmit }) => {
         name="name"
         placeholder="name"
         height="var(--field-height)"
-        icon={IconUser}
-        value={name}
         autoComplete="off"
+        value={name}
         onChange={e => setName(e?.currentTarget.value || '')}
-        pattern="^\s*[A-ZА-Я\u0406ЇЄa-zа-яіїє]{2,}\s*(\s+[A-ZА-Я\u0406ЇЄa-zа-яіїє]{2,})?\s*$"
-        title="First and last name(optional) must contain only letters and be at least 2 characters long"
+        pattern={fieldData.name.pattern}
+        title={fieldData.name.title}
+        icon={fieldData.name.icon}
         required
       />
 
@@ -39,13 +40,13 @@ export const ContactEditor = ({ onSubmit }) => {
         name="number"
         placeholder="number"
         height="var(--field-height)"
-        icon={IconPhone}
         type="tel"
-        value={number}
         autoComplete="off"
+        value={number}
         onChange={e => setNumber(e?.target.value || '')}
-        pattern="^([\s-]*\d[\s-]*){7}$"
-        title="The number must be 7 digits long and may contain spaces and hyphens"
+        pattern={fieldData.number.pattern}
+        title={fieldData.number.title}
+        icon={fieldData.number.icon}
         required
       />
 
