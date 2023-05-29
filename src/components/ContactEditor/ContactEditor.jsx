@@ -44,7 +44,7 @@ export const ContactEditor = ({ onSubmit }) => {
         autoComplete="off"
         onChange={e => setNumber(e?.target.value || '')}
         pattern="^([\s-]*\d[\s-]*){7}$"
-        title="Number must be 7 digits"
+        title="The number must be 7 digits long and may contain spaces and hyphens"
         required
       />
 
