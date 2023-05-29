@@ -112,7 +112,7 @@ export const App = props => {
 
       {/* Contact list */}
       {filtered.length > 0 && (
-        <Block maxHeight="70%">
+        <Block maxHeight="70vh">
           <ContactList
             value={filtered}
             itemHeight="40px"

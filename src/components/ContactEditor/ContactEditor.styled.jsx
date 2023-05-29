@@ -25,5 +25,5 @@ export const Form = styled.form`
 
 export const Button = styled(ButtonPrimary)`
   margin: 0 auto 0 auto;
-  width: 20%;
+  width: 110px;
 `;
