@@ -30,7 +30,7 @@ const toastOpts = {
 // App
 //
 
-export const App = props => {
+export const App = () => {
   const [filter, setFilter] = useState('');
   const [contacts, setContacts] = useLocalStorage(
     LS_KEY_CONTACTS,

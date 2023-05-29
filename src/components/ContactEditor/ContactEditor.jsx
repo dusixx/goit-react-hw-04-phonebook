@@ -4,7 +4,7 @@ import { TextField } from 'components/TextField';
 import { Form, Button } from './ContactEditor.styled';
 import { IconPhone, IconUser, IconUserPlus } from 'styles/icons';
 
-export const ContactEditor = props => {
+export const ContactEditor = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -15,7 +15,6 @@ export const ContactEditor = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { onSubmit } = props;
     const success = onSubmit && onSubmit({ name, number });
     if (success) resetForm();
   };
